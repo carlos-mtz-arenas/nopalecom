@@ -21,24 +21,24 @@ export class ProductDetails extends LitElement {
   render() {
     return html`
       <form @submit=${this._onSumbmit}>
-        <md-filled-text-field
+        <md-outlined-text-field
           name="sku"
           label="${getMessage('products.attrs.sku')}"
           value="${this.product?.sku}"
         >
-        </md-filled-text-field>
-        <md-filled-text-field
+        </md-outlined-text-field>
+        <md-outlined-text-field
           name="name"
           label="${getMessage('products.attrs.name')}"
           value="${this.product?.name}"
         >
-        </md-filled-text-field>
-        <md-filled-text-field
+        </md-outlined-text-field>
+        <md-outlined-text-field
           name="description"
           label="${getMessage('products.attrs.name')}"
           value="${this.product?.description}"
         >
-        </md-filled-text-field>
+        </md-outlined-text-field>
         <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
       </form>
     `

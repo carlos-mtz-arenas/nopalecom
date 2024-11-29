@@ -4,24 +4,28 @@ import { getMessage } from '../core/lang/get-message';
 
 export class ProductsFilters extends LitElement {
   static styles = css`
-    md-filled-text-field {
+    md-outlined-text-field {
       width: -webkit-fill-available;
+      margin: 10px 0;
     }
 
     md-filled-button {
-      margin: 27px 0;
+      margin: 17px 0;
     }
 
     @media (min-width: 576px) {
     }
 
     @media (min-width: 768px) {
+      md-outlined-text-field {
+        display: block;
+        width: 70%;
+      }
     }
 
     @media (min-width: 992px) {
-      md-filled-text-field {
-        display: block;
-        width: 70%;
+      md-outlined-text-field {
+        width: 40%;
       }
     }
 
@@ -33,12 +37,12 @@ export class ProductsFilters extends LitElement {
     return html`
       <section class="filters">
         <form @submit=${this._onSubmit}>
-          <md-filled-text-field name="sku" label="${getMessage('products.attrs.sku')}">
-          </md-filled-text-field>
-          <md-filled-text-field name="name" label="${getMessage('products.filters.name')}">
-          </md-filled-text-field>
-          <md-filled-text-field name="description" label="${getMessage('products.filters.description')}">
-          </md-filled-text-field>
+          <md-outlined-text-field name="sku" label="${getMessage('products.attrs.sku')}">
+          </md-outlined-text-field>
+          <md-outlined-text-field name="name" label="${getMessage('products.filters.name')}">
+          </md-outlined-text-field>
+          <md-outlined-text-field name="description" label="${getMessage('products.filters.description')}">
+          </md-outlined-text-field>
           <md-filled-button type="submit">${getMessage('generic.search')}</md-filled-button>
         </form>
       </section>
