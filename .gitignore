@@ -1,0 +1,5 @@
+node_modules/
+*.log
+*.javac
+build/
+dist/
