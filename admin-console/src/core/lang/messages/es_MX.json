@@ -1,0 +1,28 @@
+{
+  "products": {
+    "attrs": {
+      "sku": "SKU",
+      "name": "Nombre",
+      "brand": "Marca",
+      "isEnabled": "Habilitado",
+      "description": "Descripcion"
+    },
+    "page": {
+      "title": "Administracion de Productos"
+    },
+    "filters": {
+      "name": "Nombre del producto",
+      "description": "Parte de la descripcion del producto"
+    },
+    "resultsTable": {
+      "noResults": "Sin resultados",
+      "thead": {
+        "actions": "Acciones"
+      }
+    }
+  },
+  "generic": {
+    "search": "Buscar",
+    "save": "Guardar"
+  }
+}

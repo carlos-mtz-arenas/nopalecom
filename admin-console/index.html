@@ -8,11 +8,24 @@
 
     <!-- TODO use a local reference for this as well-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script type="module" src="/src/material-ui.js"></script>
-    <!-- components first, then pages - just based off hierarchy -->
-    <script type="module" src="/src/templates/index.js"></script>
-    <script type="module" src="/src/products/index.js"></script>
-    <script type="module" src="/src/pages/login-page.js"></script>
+
+    <script type="module" defer>
+    import { getMessagesForLang } from '/src/core/lang/messages/index.js';
+    import { getConfig } from '/src/core/config/get-config.js';
+
+    window.nopalEcom = {
+      messages: {},
+    };
+
+    const initLang = () => {
+      //const siteLangs = getConfig('lang.supported');
+      const lang = getConfig('lang.default');
+
+      window.nopalEcom.messages = { ...getMessagesForLang(lang) };
+    }
+
+    initLang();
+    </script>
     <!-- just define the variables for the theme itself -->
     <style>
     html {
@@ -33,5 +46,13 @@
   </head>
   <body>
     <products-page></products-page>
+    <noscript>
+      You need to enable JavaScript for this to work.
+    </noscript>
+    <script type="module" src="/src/material-ui.js"></script>
+    <!-- components first, then pages - just based off hierarchy -->
+    <script type="module" src="/src/templates/index.js"></script>
+    <script type="module" src="/src/products/index.js"></script>
+    <script type="module" src="/src/pages/login-page.js"></script>
   </body>
 </html>

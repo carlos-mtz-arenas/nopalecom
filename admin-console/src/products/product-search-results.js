@@ -1,4 +1,5 @@
 import { LitElement, css, html } from 'lit';
+import { getMessage } from '../core/lang/get-message';
 
 
 export class ProductSearchResults extends LitElement {
@@ -81,11 +82,11 @@ export class ProductSearchResults extends LitElement {
       <table>
         <thead>
           <tr>
-            <th>SKU</th>
-            <th>Nombre</th>
-            <th>Marca</th>
-            <th>Habilitado</th>
-            <th>Acciones</th>
+            <th>${getMessage('products.attrs.sku')}</th>
+            <th>${getMessage('products.attrs.name')}</th>
+            <th>${getMessage('products.attrs.brand')}</th>
+            <th>${getMessage('products.attrs.isEnabled')}</th>
+            <th>${getMessage('products.resultsTable.thead.actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -107,7 +108,7 @@ export class ProductSearchResults extends LitElement {
       }
         </tbody>
       </table >
-      ${this.searchResults.length === 0 ? html`<strong>Sin resultados</strong>` : null}
+      ${this.searchResults.length === 0 ? html`<strong>${getMessage('products.resultsTable.noResults')}</strong>` : null}
   `;
   }
 

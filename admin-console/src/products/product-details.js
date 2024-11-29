@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit';
+import { getMessage } from '../core/lang/get-message';
 
 
 export class ProductDetails extends LitElement {
@@ -19,35 +20,35 @@ export class ProductDetails extends LitElement {
 
   render() {
     return html`
-      <form @submit=${this._onSubmit}>
+      <form @submit=${this._onSumbmit}>
         <md-filled-text-field
           name="sku"
-          label="SKU"
+          label="${getMessage('products.attrs.sku')}"
           value="${this.product?.sku}"
         >
         </md-filled-text-field>
         <md-filled-text-field
           name="name"
-          label="Nombre del producto"
+          label="${getMessage('products.attrs.name')}"
           value="${this.product?.name}"
         >
         </md-filled-text-field>
         <md-filled-text-field
           name="description"
-          label="Descripcion del producto"
+          label="${getMessage('products.attrs.name')}"
           value="${this.product?.description}"
         >
         </md-filled-text-field>
-        <md-filled-button type="submit">Guardar</md-filled-button>
+        <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
       </form>
     `
   }
 
-  async _onSumbmit(ev) {
+  _onSumbmit(ev) {
     ev.preventDefault();
 
     const isCreate = Object.keys(this.product).length === 0;
-
+    console.log('deducting', isCreate ? 'creating' : 'updating');
   }
 
 }

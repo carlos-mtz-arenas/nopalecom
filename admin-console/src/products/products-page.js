@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { searchProducts } from './handlers/search-products';
 import { getProductDetails } from './handlers/get-product-details';
+import { getMessage } from '../core/lang/get-message';
 
 
 export class ProductsPage extends LitElement {
@@ -8,7 +9,7 @@ export class ProductsPage extends LitElement {
   render() {
     return html`
       <crud-template>
-        <h1 slot="title" class="title">Productos</h1>
+        <h1 slot="title" class="title">${getMessage('products.page.title')}</h1>
         <products-filters
           slot="filters"
           @product-search-operation=${this._onProductSearchOperation}
@@ -24,7 +25,6 @@ export class ProductsPage extends LitElement {
           class="item-details"
           slot="item-details"
         >
-          details of the selected item
         </product-details>
       </crud-template>
     `

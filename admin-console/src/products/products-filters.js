@@ -1,4 +1,5 @@
 import { LitElement, css, html } from 'lit';
+import { getMessage } from '../core/lang/get-message';
 
 
 export class ProductsFilters extends LitElement {
@@ -32,13 +33,13 @@ export class ProductsFilters extends LitElement {
     return html`
       <section class="filters">
         <form @submit=${this._onSubmit}>
-          <md-filled-text-field name="sku" label="SKU">
+          <md-filled-text-field name="sku" label="${getMessage('products.attrs.sku')}">
           </md-filled-text-field>
-          <md-filled-text-field name="name" label="Nombre del producto">
+          <md-filled-text-field name="name" label="${getMessage('products.filters.name')}">
           </md-filled-text-field>
-          <md-filled-text-field name="description" label="Descripcion del producto">
+          <md-filled-text-field name="description" label="${getMessage('products.filters.description')}">
           </md-filled-text-field>
-          <md-filled-button type="submit">Buscar</md-filled-button>
+          <md-filled-button type="submit">${getMessage('generic.search')}</md-filled-button>
         </form>
       </section>
     `
@@ -57,7 +58,7 @@ export class ProductsFilters extends LitElement {
     });
     this.dispatchEvent(searchEvent);
   }
-
 }
+
 
 window.customElements.define('products-filters', ProductsFilters);
