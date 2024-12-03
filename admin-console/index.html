@@ -29,8 +29,10 @@
     <!-- just define the variables for the theme itself -->
     <style>
     html {
-      --ecom-color-primary: #eee;
-      --ecom-color-text-primary: black;
+      --ecom-color-primary: #6750a4;
+      --ecom-color-text-primary: #fff;
+      --ecom-screen-padding-md: 10%;
+      --ecom-screen-padding-lg: 20%;
     }
 
     body {
@@ -40,18 +42,26 @@
       font-family: 'Roboto', monospace, auto;
       font-weight: 300;
     }
+
+    h1 {
+      margin: 1em 0;
+    }
     </style>
     <!-- TODO use a local reference -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   </head>
   <body>
-    <products-page></products-page>
+    <app-main></app-main>
     <noscript>
       You need to enable JavaScript for this to work.
     </noscript>
+    <script type="module" src="/src/app-main.js"></script>
     <script type="module" src="/src/material-ui.js"></script>
     <!-- components first, then pages - just based off hierarchy -->
     <script type="module" src="/src/templates/index.js"></script>
+    <script type="module" src="/src/core/components/index.js"></script>
+    <!-- the actual modules from the applciation -->
+    <script type="module" src="/src/stores/index.js"></script>
     <script type="module" src="/src/products/index.js"></script>
     <script type="module" src="/src/pages/login-page.js"></script>
   </body>

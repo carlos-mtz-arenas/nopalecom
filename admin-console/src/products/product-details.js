@@ -35,7 +35,7 @@ export class ProductDetails extends LitElement {
         </md-outlined-text-field>
         <md-outlined-text-field
           name="description"
-          label="${getMessage('products.attrs.name')}"
+          label="${getMessage('products.attrs.description')}"
           value="${this.product?.description}"
         >
         </md-outlined-text-field>
