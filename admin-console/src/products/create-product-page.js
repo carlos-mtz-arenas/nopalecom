@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { getMessage } from '../core/lang/get-message';
 import { createProduct } from './handlers/create-product';
+import { Router } from '@vaadin/router';
 
 
 export class CreateProductPage extends LitElement {
@@ -42,7 +43,7 @@ export class CreateProductPage extends LitElement {
       const dataValues = Object.fromEntries(formData);
 
       const uuid = await createProduct(dataValues);
-      console.log('registered', uuid);
+      Router.go('/products');
     } catch (err) {
       console.error('Error while creating a new product', err);
       // TODO handle the error
