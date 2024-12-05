@@ -98,7 +98,7 @@ export class ProductSearchResults extends LitElement {
             <td>${result.isEnabled ? 'si' : 'no'}</td>
             <td>
               <md-icon-button
-                @click=${() => this._onClick(result.sku)}
+                @click=${() => this._onClick(result.uuid)}
                 aria-label="detalles del producto ${result.name}"
               >
                 <md-icon>details</md-icon>
@@ -112,9 +112,9 @@ export class ProductSearchResults extends LitElement {
   `;
   }
 
-  _onClick(sku) {
+  _onClick(uuid) {
     const selectedEvent = new CustomEvent('product-result-selected', {
-      detail: sku
+      detail: uuid,
     });
 
     this.dispatchEvent(selectedEvent);

@@ -25,7 +25,7 @@ export class ProductsFilters extends LitElement {
 
     @media (min-width: 992px) {
       md-outlined-text-field {
-        width: 40%;
+        width: 60%;
       }
     }
 

@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { searchProducts } from './handlers/search-products';
-import { getProductDetails } from './handlers/get-product-details';
 import { getMessage } from '../core/lang/get-message';
+import { Router } from '@vaadin/router';
 
 
 export class ProductsPage extends LitElement {
@@ -10,6 +10,7 @@ export class ProductsPage extends LitElement {
     return html`
       <crud-template>
         <h1 slot="title" class="title">${getMessage('products.page.title')}</h1>
+        <md-filled-button @click=${this._onNewProductClick} slot="filters">${getMessage('products.page.newProduct')}</md-filled-button>
         <products-filters
           slot="filters"
           @product-search-operation=${this._onProductSearchOperation}
@@ -21,13 +22,12 @@ export class ProductsPage extends LitElement {
           @product-result-selected=${this._onProductSelected}
         >
         </product-search-results>
-        <product-details
-          class="item-details"
-          slot="item-details"
-        >
-        </product-details>
       </crud-template>
     `
+  }
+
+  async _onNewProductClick() {
+    Router.go(`/products/create`);
   }
 
   async _onProductSearchOperation(ev) {
@@ -41,23 +41,15 @@ export class ProductsPage extends LitElement {
       resultsArea.setAttribute('search-results', JSON.stringify(results));
     } catch (err) {
       console.error('Error while fetching products', err);
-      // TODO: handle error
+      // TODO handle error
     }
   }
 
   async _onProductSelected(ev) {
-    const selectedSku = ev.detail;
+    const product = ev.detail;
 
-    try {
-      const productDetails = await getProductDetails(selectedSku);
-      const detailsArea =
-        this.renderRoot.querySelector('product-details');
-
-      detailsArea.setAttribute('product', JSON.stringify(productDetails));
-    } catch (err) {
-      console.error(`Error fetching product [${selectedSku}] details`, err);
-      // TODO handle error
-    }
+    Router.go(`/products/${product}`);
+    // TODO redirect to update-product
   }
 
 }

@@ -8,7 +8,9 @@
       "description": "Descripcion"
     },
     "page": {
-      "title": "Administracion de Productos"
+      "title": "Administracion de Productos",
+      "newProduct": "Crear Producto",
+      "editProduct": "Modificar Producto"
     },
     "filters": {
       "name": "Nombre del producto",
@@ -23,6 +25,7 @@
   },
   "generic": {
     "search": "Buscar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "saveChanges": "Guardar Cambios"
   }
 }
