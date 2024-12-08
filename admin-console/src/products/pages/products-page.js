@@ -1,7 +1,8 @@
 import { LitElement, html } from 'lit';
-import { searchProducts } from './handlers/search-products';
-import { getMessage } from '../core/lang/get-message';
 import { Router } from '@vaadin/router';
+
+import { searchProducts } from '@products/handlers/search-products';
+import { getMessage } from '@core/lang/get-message';
 
 
 export class ProductsPage extends LitElement {

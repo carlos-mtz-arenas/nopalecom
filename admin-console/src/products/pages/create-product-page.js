@@ -1,7 +1,9 @@
 import { LitElement, html } from 'lit';
-import { getMessage } from '../core/lang/get-message';
-import { createProduct } from './handlers/create-product';
 import { Router } from '@vaadin/router';
+
+import { getMessage } from '@core/lang/get-message';
+import { createProduct } from '@products/handlers/create-product';
+import { showSnack } from '@core/handlers/show-snack';
 
 
 export class CreateProductPage extends LitElement {
@@ -42,7 +44,13 @@ export class CreateProductPage extends LitElement {
       const formData = new FormData(ev.target)
       const dataValues = Object.fromEntries(formData);
 
-      const uuid = await createProduct(dataValues);
+      const { uuid } = await createProduct(dataValues);
+
+      await showSnack({
+        dispatchEvent: (event) => this.dispatchEvent(event),
+        msg: getMessage('generic.saves.saved', [uuid]),
+      });
+
       Router.go('/products');
     } catch (err) {
       console.error('Error while creating a new product', err);

@@ -1,7 +1,9 @@
 import { LitElement, css, html } from 'lit';
-import { getMessage } from '../core/lang/get-message';
 
-import { getProductDetailsById } from './handlers/get-product-details';
+import { getMessage } from '@core/lang/get-message';
+import { getProductDetailsById } from '@products/handlers/get-product-details';
+import { Router } from '@vaadin/router';
+import { showSnack } from '@core/handlers/show-snack';
 
 
 export class EditProductPage extends LitElement {
@@ -80,8 +82,15 @@ export class EditProductPage extends LitElement {
   `
   }
 
-  _onSumbmit(ev) {
+  async _onSumbmit(ev) {
     ev.preventDefault();
+
+    await showSnack({
+      dispatchEvent: (event) => this.dispatchEvent(event),
+      msg: getMessage('generic.changes.saved'),
+    });
+
+    Router.go('/products');
   }
 
 }

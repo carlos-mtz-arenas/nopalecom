@@ -26,6 +26,14 @@
   "generic": {
     "search": "Buscar",
     "save": "Guardar",
-    "saveChanges": "Guardar Cambios"
+    "saveChanges": "Guardar Cambios",
+    "changes": {
+      "saved": "Cambios guardados exitosamente",
+      "error": "Error al intentar guardar los cambios"
+    },
+    "saves": {
+      "saved": "Registro creado {0}",
+      "error": "Error al intentar crear el registro"
+    }
   }
 }

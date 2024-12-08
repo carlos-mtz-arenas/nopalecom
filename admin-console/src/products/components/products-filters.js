@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit';
-import { getMessage } from '../core/lang/get-message';
+import { getMessage } from '@core/lang/get-message';
 
 
 export class ProductsFilters extends LitElement {

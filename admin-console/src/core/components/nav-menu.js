@@ -9,22 +9,32 @@ export class NavMenu extends LitElement {
     padding: 10px 20px;
     background-color: var(--ecom-color-primary);
     color: var(--ecom-color-text-primary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
   ul {
     margin: 0;
     padding: 0;
+    display: flex;
   }
 
   li {
     display: block;
+    width: -webkit-fill-available;
   }
 
   a {
     color: var(--ecom-color-text-primary);
     display: block;
-    padding: 17px 10px;
+    padding: 17px;
     text-decoration: none;
+    text-align: center;
   }
 
   @media (min-width: 576px) {
@@ -38,46 +48,48 @@ export class NavMenu extends LitElement {
       padding: 10px 0;
     }
 
-    nav {
-      width: calc(100% - var(--ecom-screen-padding-md));
-      margin: 0 auto;
-    }
-
-    li {
-      /*display: inline-block;*/
-      margin-right: 10px;
+    ul {
+      display: block;
     }
   }
 
   @media (min-width: 1200px) {
-    nav {
-      width: calc(100% - var(--ecom-screen-padding-lg));
-      margin: 0 auto;
-    }
   }
   `;
+
+  static get properties() {
+    return {
+      menuOpen: { type: Boolean, reflect: true },
+    }
+  };
+
+  constructor() {
+    super();
+    this.menuOpen = false;
+  }
+
+  _onToggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   render() {
     return html`
     <nav>
       <ul>
         <li>
-          <a href="/stores">Tiendas</a>
+          <a title="Stores" href="/stores"><md-icon>store</md-icon></a>
         </li>
         <li>
-          <a href="/products">Productos</a>
+          <a title="Products" href="/products"><md-icon>storefront</md-icon></a>
         </li>
         <li>
-          <a href="#">Inventarios</a>
+          <a title="Inventory" href="#"><md-icon>inventory_2</md-icon></a>
         </li>
         <li>
-          <a href="#">Usuarios</a>
+          <a title="Users" href="#"><md-icon>group</md-icon></a>
         </li>
         <li>
-          <a href="#">Configuraciones</a>
-        </li>
-        <li>
-          <a href="#">Busqueda</a>
+          <a title="Settings" href="#"><md-icon>settings</md-icon></a>
         </li>
       </ul>
     </nav>

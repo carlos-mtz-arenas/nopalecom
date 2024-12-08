@@ -17,19 +17,20 @@
       messages: {},
     };
 
-    const initLang = () => {
-      //const siteLangs = getConfig('lang.supported');
+    (() => {
+      // TODO support custom user language, probably through the browser's information?
+      //  or probably a feature configure by the user somewhere
       const lang = getConfig('lang.default');
 
       window.nopalEcom.messages = { ...getMessagesForLang(lang) };
-    }
-
-    initLang();
+    })();
     </script>
     <!-- just define the variables for the theme itself -->
     <style>
     html {
       --ecom-color-primary: #6750a4;
+      --ecom-color-bg: #f5f5f5;
+      --ecom-color-bg-dark: #e1e0e0;
       --ecom-color-text-primary: #fff;
       --ecom-screen-padding-md: 10%;
       --ecom-screen-padding-lg: 20%;
@@ -43,12 +44,17 @@
       font-weight: 300;
     }
 
+    body, html, app-main {
+      height: 100%;
+    }
+
     h1 {
       margin: 1em 0;
     }
     </style>
     <!-- TODO use a local reference -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
   </head>
   <body>
     <app-main></app-main>
@@ -63,6 +69,5 @@
     <!-- the actual modules from the applciation -->
     <script type="module" src="/src/stores/index.js"></script>
     <script type="module" src="/src/products/index.js"></script>
-    <script type="module" src="/src/pages/login-page.js"></script>
   </body>
 </html>

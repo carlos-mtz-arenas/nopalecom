@@ -6,11 +6,25 @@ import { routes } from './app-router.js';
 
 export class AppMain extends LitElement {
   static styles = css`
-    :root {
+    :host {
+      display: flex;
+      flex-direction: column;
+      transition: all 0.5s ease-in-out;
+      overflow: hidden;
+    }
+
+    nav-menu {
+      padding: 1em;
+      flex-shrink: 0;
+      transition: all 0.5s ease-in-out;
     }
 
     main {
-      width: 100%;
+      width: -webkit-fill-available;
+      background-color: var(--ecom-color-bg);
+      padding: 17px 1em;
+      flex-grow: 1;
+      transition: all 0.5s ease-in-out;
     }
 
     @media (min-width: 576px) {
@@ -21,7 +35,12 @@ export class AppMain extends LitElement {
 
     @media (min-width: 992px) {
       :host {
-        display: flex;
+        flex-direction: row;
+      }
+
+      nav-menu {
+        max-width: 20%;
+        padding: 2em 1.5em;
       }
 
       main {
