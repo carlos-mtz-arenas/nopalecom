@@ -15,14 +15,27 @@ export class EditProductPage extends LitElement {
   }
 
   static styles = css`
+    :host {
+      display: block;
+    }
+
+    section.actions {
+      display: block;
+    }
+
     md-outlined-text-field {
-      width: 100%;
+      width: -webkit-fill-available;
       margin: 17px 0;
     }
 
-    md-filled-button {
-      margin-top: 17px;
-      float: right;
+    section.actions md-filled-button {
+      margin: 17px 0 0 0;
+      width: -webkit-fill-available;
+    }
+
+    section.actions md-outlined-button {
+      margin: 17px 0;
+      width: -webkit-fill-available;
     }
 
     @media (min-width: 576px) {
@@ -32,6 +45,17 @@ export class EditProductPage extends LitElement {
     }
 
     @media (min-width: 992px) {
+      section.actions {
+        text-align: right;
+      }
+
+      section.actions md-filled-button {
+        width: initial;
+      }
+
+      section.actions md-outlined-button {
+        width: initial;
+      }
     }
 
     @media (min-width: 1200px) {
@@ -77,10 +101,20 @@ export class EditProductPage extends LitElement {
           value="${this.product?.description}"
         >
         </md-outlined-text-field>
-        <md-filled-button type="submit">${getMessage('generic.saveChanges')}</md-filled-button>
+        <section class="actions">
+          <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
+          <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
+        </section>
       </form >
   `
   }
+
+  _onCancel(ev) {
+    ev.preventDefault();
+
+    Router.go('/products');
+  }
+
 
   async _onSumbmit(ev) {
     ev.preventDefault();

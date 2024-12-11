@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { Router } from '@vaadin/router';
 
 import { getMessage } from '@core/lang/get-message';
@@ -7,6 +7,53 @@ import { showSnack } from '@core/handlers/show-snack';
 
 
 export class CreateProductPage extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+
+    section.actions {
+      display: block;
+    }
+
+    md-outlined-text-field {
+      width: -webkit-fill-available;
+      margin: 17px 0;
+    }
+
+    section.actions md-filled-button {
+      margin: 17px 0 0 0;
+      width: -webkit-fill-available;
+    }
+
+    section.actions md-outlined-button {
+      margin: 17px 0;
+      width: -webkit-fill-available;
+    }
+
+    @media (min-width: 576px) {
+    }
+
+    @media (min-width: 768px) {
+    }
+
+    @media (min-width: 992px) {
+      section.actions {
+        text-align: right;
+      }
+
+      section.actions md-filled-button {
+        width: initial;
+      }
+
+      section.actions md-outlined-button {
+        width: initial;
+      }
+    }
+
+    @media (min-width: 1200px) {
+    }
+  `;
 
   render() {
     return html`
@@ -32,9 +79,18 @@ export class CreateProductPage extends LitElement {
           value="${this.product?.description}"
         >
         </md-outlined-text-field>
-        <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
+        <section class="actions">
+          <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
+          <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
+        </section>
       </form>
     `
+  }
+
+  _onCancel(ev) {
+    ev.preventDefault();
+
+    Router.go('/products');
   }
 
   async _onSumbmit(ev) {

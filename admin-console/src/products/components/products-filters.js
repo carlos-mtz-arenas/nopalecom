@@ -37,12 +37,16 @@ export class ProductsFilters extends LitElement {
     return html`
       <section class="filters">
         <form @submit=${this._onSubmit}>
-          <md-outlined-text-field name="sku" label="${getMessage('products.attrs.sku')}">
-          </md-outlined-text-field>
-          <md-outlined-text-field name="name" label="${getMessage('products.filters.name')}">
-          </md-outlined-text-field>
-          <md-outlined-text-field name="description" label="${getMessage('products.filters.description')}">
-          </md-outlined-text-field>
+          <section>
+            <expansion-panel header="${getMessage('products.filters.panelTitle')}">
+              <md-outlined-text-field name="sku" label="${getMessage('products.attrs.sku')}">
+              </md-outlined-text-field>
+              <md-outlined-text-field name="name" label="${getMessage('products.filters.name')}">
+              </md-outlined-text-field>
+              <md-outlined-text-field name="description" label="${getMessage('products.filters.description')}">
+              </md-outlined-text-field>
+            </expansion-panel>
+          </section>
           <md-filled-button type="submit">${getMessage('generic.search')}</md-filled-button>
         </form>
       </section>

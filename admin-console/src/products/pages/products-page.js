@@ -11,7 +11,7 @@ export class ProductsPage extends LitElement {
     return html`
       <crud-template>
         <h1 slot="title" class="title">${getMessage('products.page.title')}</h1>
-        <md-filled-button @click=${this._onNewProductClick} slot="filters">${getMessage('products.page.newProduct')}</md-filled-button>
+        <md-filled-button @click=${this._onNewProductClick} slot="title">${getMessage('products.page.newProduct')}</md-filled-button>
         <products-filters
           slot="filters"
           @product-search-operation=${this._onProductSearchOperation}

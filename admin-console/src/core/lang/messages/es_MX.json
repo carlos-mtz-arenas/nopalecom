@@ -13,6 +13,7 @@
       "editProduct": "Modificar Producto"
     },
     "filters": {
+      "panelTitle": "Filtros",
       "name": "Nombre del producto",
       "description": "Parte de la descripcion del producto"
     },
@@ -25,7 +26,9 @@
   },
   "generic": {
     "search": "Buscar",
+    "searchResults": "Resultados de la busqueda",
     "save": "Guardar",
+    "cancel": "Cancelar",
     "saveChanges": "Guardar Cambios",
     "changes": {
       "saved": "Cambios guardados exitosamente",
