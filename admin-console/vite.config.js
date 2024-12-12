@@ -10,6 +10,9 @@ export default {
         { find: "@products/components", replacement: "../components" },
         { find: '@products/handlers', replacement: '../handlers' },
         { find: '@products/pages', replacement: '../pages' },
+        { find: "@stores/components", replacement: "../components" },
+        { find: '@stores/handlers', replacement: '../handlers' },
+        { find: '@stores/pages', replacement: '../pages' },
       ]
     })
   ],

@@ -17,6 +17,14 @@ export const routes = [
     path: '/stores',
     component: 'stores-page',
   },
+  {
+    path: '/stores/create',
+    component: 'create-store-page',
+  },
+  {
+    path: '/stores/:uuid',
+    component: 'edit-store-page',
+  },
 ];
 
 

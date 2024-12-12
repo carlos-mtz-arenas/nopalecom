@@ -24,6 +24,25 @@
       }
     }
   },
+  "stores": {
+    "attrs": {
+      "name": "Nombre",
+      "address": "Direccion",
+      "isEnabled": "Habilitado",
+      "description": "Descripcion"
+    },
+    "page": {
+      "title": "Administracion de Tiendas",
+      "newStore": "Crear Tienda",
+      "editStore": "Modificar Tienda"
+    },
+    "resultsTable": {
+      "noResults": "Sin resultados",
+      "thead": {
+        "actions": "Acciones"
+      }
+    }
+  },
   "generic": {
     "search": "Buscar",
     "searchResults": "Resultados de la busqueda",

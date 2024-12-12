@@ -9,7 +9,7 @@ export class ProductsPage extends LitElement {
 
   render() {
     return html`
-      <crud-template>
+      <crud-layout>
         <h1 slot="title" class="title">${getMessage('products.page.title')}</h1>
         <md-filled-button @click=${this._onNewProductClick} slot="title">${getMessage('products.page.newProduct')}</md-filled-button>
         <products-filters
@@ -23,7 +23,7 @@ export class ProductsPage extends LitElement {
           @product-result-selected=${this._onProductSelected}
         >
         </product-search-results>
-      </crud-template>
+      </crud-layout>
     `
   }
 

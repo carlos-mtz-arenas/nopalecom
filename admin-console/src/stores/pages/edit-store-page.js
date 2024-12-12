@@ -1,12 +1,19 @@
 import { LitElement, css, html } from 'lit';
-import { Router } from '@vaadin/router';
 
 import { getMessage } from '@core/lang/get-message';
-import { createProduct } from '@products/handlers/create-product';
+import { getStoreById } from '@stores/handlers/get-store-details';
+import { Router } from '@vaadin/router';
 import { showSnack } from '@core/handlers/show-snack';
 
 
-export class CreateProductPage extends LitElement {
+export class EditStorePage extends LitElement {
+  static get properties() {
+    return {
+      store: { type: Object },
+      location: { type: Object },
+    }
+  }
+
   static styles = css`
     :host {
       display: block;
@@ -55,28 +62,46 @@ export class CreateProductPage extends LitElement {
     }
   `;
 
+  constructor() {
+    super();
+
+    this.store = {};
+  }
+
+  async firstUpdated() {
+    try {
+      const details = await getStoreById(this.location.params.uuid);
+      this.store = { ...details };
+    } catch (err) {
+      console.error(`Error while pulling details for store [${this.location.params.uuid}]`, err);
+      // TODO handle error
+    }
+  }
+
   render() {
     return html`
-      <h1 slot="title">${getMessage('products.page.newProduct')}</h1>
-      <form @submit=${this._onSumbmit} slot="form">
-        <md-outlined-text-field
-          name="sku"
-          label="${getMessage('products.attrs.sku')}"
-          required
-          value="${this.product?.sku}"
-        >
-        </md-outlined-text-field>
+      <h1>${getMessage('stores.page.editStore')} ${this.store?.uuid}</h1 >
+      <!-- TODO handle the case in which we're still loading the info -->
+      <form @submit=${this._onSumbmit}>
         <md-outlined-text-field
           name="name"
-          label="${getMessage('products.attrs.name')}"
+          label="${getMessage('stores.attrs.name')}"
           required
-          value="${this.product?.name}"
+          value=${this.store?.name}
         >
         </md-outlined-text-field>
         <md-outlined-text-field
-          name="description"
-          label="${getMessage('products.attrs.description')}"
-          value="${this.product?.description}"
+          name="address"
+          label="${getMessage('stores.attrs.address')}"
+          required
+          value=${this.store?.address}
+        >
+        </md-outlined-text-field>
+        <!-- TODO change this for a checkbox instead -->
+        <md-outlined-text-field
+          name="enabled"
+          label="${getMessage('stores.attrs.isEnabled')}"
+          value=${this.store?.isEnabled}
         >
         </md-outlined-text-field>
         <section class="actions">
@@ -84,36 +109,27 @@ export class CreateProductPage extends LitElement {
           <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
         </section>
       </form>
-    `
+    `;
   }
 
   _onCancel(ev) {
     ev.preventDefault();
 
-    Router.go('/products');
+    Router.go('/stores');
   }
+
 
   async _onSumbmit(ev) {
     ev.preventDefault();
 
-    try {
-      const formData = new FormData(ev.target)
-      const dataValues = Object.fromEntries(formData);
+    await showSnack({
+      dispatchEvent: (event) => this.dispatchEvent(event),
+      msg: getMessage('generic.changes.saved'),
+    });
 
-      const { uuid } = await createProduct(dataValues);
-
-      await showSnack({
-        dispatchEvent: (event) => this.dispatchEvent(event),
-        msg: getMessage('generic.saves.saved', [uuid]),
-      });
-
-      Router.go('/products');
-    } catch (err) {
-      console.error('Error while creating a new product', err);
-      // TODO handle the error
-    }
+    Router.go('/stores');
   }
 
 }
 
-window.customElements.define('create-product-page', CreateProductPage);
+window.customElements.define('edit-store-page', EditStorePage);
