@@ -19,8 +19,27 @@ export class EditStorePage extends LitElement {
       display: block;
     }
 
+    form {
+      background-color: white;
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 1em;
+      margin-bottom: 2.5em;
+    }
+
+    section {
+      display: block;
+      margin: 17px 0;
+    }
+
     section.actions {
       display: block;
+    }
+
+    section.actions md-outlined-button,
+    section.actions md-filled-button {
+      margin: 7px 0;
+      width: -webkit-fill-available;
     }
 
     md-outlined-text-field {
@@ -28,14 +47,8 @@ export class EditStorePage extends LitElement {
       margin: 17px 0;
     }
 
-    section.actions md-filled-button {
-      margin: 17px 0 0 0;
-      width: -webkit-fill-available;
-    }
-
-    section.actions md-outlined-button {
-      margin: 17px 0;
-      width: -webkit-fill-available;
+    md-checkbox {
+      margin: 0;
     }
 
     @media (min-width: 576px) {
@@ -97,13 +110,31 @@ export class EditStorePage extends LitElement {
           value=${this.store?.address}
         >
         </md-outlined-text-field>
-        <!-- TODO change this for a checkbox instead -->
-        <md-outlined-text-field
-          name="enabled"
-          label="${getMessage('stores.attrs.isEnabled')}"
-          value=${this.store?.isEnabled}
-        >
-        </md-outlined-text-field>
+        <section>
+          <label for="enabled">${getMessage('stores.attrs.isEnabled')}</label>
+          <md-checkbox
+            id="enabled"
+            name="isEnabled"
+            touch-target="wrapper"
+            checked=${this.store?.isEnabled === true}
+          >
+            <span class="material-symbols-outlined">
+            visibility_off
+            </span>
+            Habilitado
+          </md-checkbox>
+        </section>
+        <section>
+          <label for="type">${getMessage('stores.attrs.type')}</label>
+          <md-filled-select id="type" name="type" required>
+            <md-select-option value="store">
+              <div slot="headline">${getMessage('stores.types.store')}</div>
+            </md-select-option>
+            <md-select-option value="warehouse">
+              <div slot="headline">${getMessage('stores.types.warehouse')}</div>
+            </md-select-option>
+          </md-filled-select>
+        </section>
         <section class="actions">
           <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
           <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>

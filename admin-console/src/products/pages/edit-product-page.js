@@ -19,6 +19,14 @@ export class EditProductPage extends LitElement {
       display: block;
     }
 
+    form {
+      background-color: white;
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 1em;
+      margin-bottom: 2.5em;
+    }
+
     section.actions {
       display: block;
     }

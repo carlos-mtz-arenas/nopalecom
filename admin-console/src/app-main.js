@@ -10,11 +10,9 @@ export class AppMain extends LitElement {
       display: flex;
       flex-direction: column;
       transition: all 0.5s ease-in-out;
-      overflow: hidden;
     }
 
     nav-menu {
-      padding: 1em;
       flex-shrink: 0;
       transition: all 0.5s ease-in-out;
     }

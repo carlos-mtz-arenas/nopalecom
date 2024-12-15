@@ -5,10 +5,14 @@
       "name": "Nombre",
       "brand": "Marca",
       "isEnabled": "Habilitado",
-      "description": "Descripcion"
+      "description": "Descripcion",
+      "stock": "Inventario",
+      "stockLocation": "Ubicacion del inventario",
+      "price": "Precio"
     },
     "page": {
       "title": "Administracion de Productos",
+      "additionalInfo": "Informacion adicional del producto",
       "newProduct": "Crear Producto",
       "editProduct": "Modificar Producto"
     },
@@ -25,11 +29,16 @@
     }
   },
   "stores": {
+    "types": {
+      "warehouse": "Bodega",
+      "store": "Tienda"
+    },
     "attrs": {
       "name": "Nombre",
       "address": "Direccion",
       "isEnabled": "Habilitado",
-      "description": "Descripcion"
+      "description": "Descripcion",
+      "type": "Tipo de tienda"
     },
     "page": {
       "title": "Administracion de Tiendas",

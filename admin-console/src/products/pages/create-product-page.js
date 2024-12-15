@@ -12,6 +12,14 @@ export class CreateProductPage extends LitElement {
       display: block;
     }
 
+    form {
+      background-color: white;
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 1em;
+      margin-bottom: 2.5em;
+    }
+
     section.actions {
       display: block;
     }
@@ -77,6 +85,16 @@ export class CreateProductPage extends LitElement {
           name="description"
           label="${getMessage('products.attrs.description')}"
           value="${this.product?.description}"
+        >
+        </md-outlined-text-field>
+        <md-outlined-text-field
+          type="number"
+          min="1"
+          step="any"
+          name="price"
+          label="${getMessage('products.attrs.price')}"
+          value="${this.product?.price}"
+          required
         >
         </md-outlined-text-field>
         <section class="actions">
