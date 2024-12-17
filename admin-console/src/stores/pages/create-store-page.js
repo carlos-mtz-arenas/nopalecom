@@ -8,18 +8,6 @@ import { showSnack } from '@core/handlers/show-snack';
 
 export class CreateStorePage extends LitElement {
   static styles = css`
-    :host {
-      display: block;
-    }
-
-    form {
-      background-color: white;
-      border: 1px solid white;
-      border-radius: 10px;
-      padding: 1em;
-      margin-bottom: 2.5em;
-    }
-
     section {
       display: block;
       margin: 17px 0;
@@ -70,50 +58,52 @@ export class CreateStorePage extends LitElement {
 
   render() {
     return html`
-      <h1>${getMessage('stores.page.newStore')}</h1>
-      <form @submit=${this._onSumbmit}>
-        <md-outlined-text-field
-          name="name"
-          label="${getMessage('stores.attrs.name')}"
-          required
-        >
-        </md-outlined-text-field>
-        <md-outlined-text-field
-          name="address"
-          label="${getMessage('stores.attrs.address')}"
-          required
-        >
-        </md-outlined-text-field>
-        <section>
-          <label for="enabled">${getMessage('stores.attrs.isEnabled')}</label>
-          <md-checkbox
-            id="enabled"
-            name="isEnabled"
-            touch-target="wrapper"
-            checked
+      <form-page-layout>
+        <h1>${getMessage('stores.page.newStore')}</h1>
+        <form @submit=${this._onSumbmit}>
+          <md-outlined-text-field
+            name="name"
+            label="${getMessage('stores.attrs.name')}"
+            required
           >
-            <span class="material-symbols-outlined">
-            visibility_off
-            </span>
-            Habilitado
-          </md-checkbox>
-        </section>
-        <section>
-          <label for="type">${getMessage('stores.attrs.type')}</label>
-          <md-filled-select id="type" name="type" required>
-            <md-select-option value="store">
-              <div slot="headline">${getMessage('stores.types.store')}</div>
-            </md-select-option>
-            <md-select-option value="warehouse">
-              <div slot="headline">${getMessage('stores.types.warehouse')}</div>
-            </md-select-option>
-          </md-filled-select>
-        </section>
-        <section class="actions">
-          <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
-          <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
-        </section>
-      </form>
+          </md-outlined-text-field>
+          <md-outlined-text-field
+            name="address"
+            label="${getMessage('stores.attrs.address')}"
+            required
+          >
+          </md-outlined-text-field>
+          <section>
+            <label for="enabled">${getMessage('stores.attrs.isEnabled')}</label>
+            <md-checkbox
+              id="enabled"
+              name="isEnabled"
+              touch-target="wrapper"
+              checked
+            >
+              <span class="material-symbols-outlined">
+              visibility_off
+              </span>
+              Habilitado
+            </md-checkbox>
+          </section>
+          <section>
+            <label for="type">${getMessage('stores.attrs.type')}</label>
+            <md-filled-select id="type" name="type" required>
+              <md-select-option value="store">
+                <div slot="headline">${getMessage('stores.types.store')}</div>
+              </md-select-option>
+              <md-select-option value="warehouse">
+                <div slot="headline">${getMessage('stores.types.warehouse')}</div>
+              </md-select-option>
+            </md-filled-select>
+          </section>
+          <section class="actions">
+            <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
+            <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
+          </section>
+        </form>
+      </form-page-layout>
     `
   }
 

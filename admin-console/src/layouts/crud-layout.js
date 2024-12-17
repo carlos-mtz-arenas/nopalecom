@@ -1,22 +1,17 @@
 import { LitElement, css, html } from 'lit';
 
-import { getMessage } from '../core/lang/get-message.js';
-
 export class CrudLayout extends LitElement {
 
   static styles = css`
-    :root {
-    }
-
-    .filters {
-    }
-
     .title {
       margin-bottom: 50px;
     }
 
     .search-results {
       margin-top: 50px;
+      background-color: white;
+      padding: 1em;
+      border-radius: 10px;
     }
 
     @media (min-width: 576px) {
@@ -29,6 +24,10 @@ export class CrudLayout extends LitElement {
       :host {
         width: 90%;
         margin: 0 auto;
+      }
+
+      .search-results {
+        padding: 2em;
       }
     }
 
@@ -45,13 +44,8 @@ export class CrudLayout extends LitElement {
       <div class="title">
         <slot name="title"></slot>
       </div>
-      <div class="filters">
-        <slot name="filters"></slot>
-      </div>
       <div class="search-results">
-        <h2>${getMessage('generic.searchResults')}</h2>
         <slot name="results"></slot>
-        <slot name="item-details"></slot>
       </div>
     `
   }

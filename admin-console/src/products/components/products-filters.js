@@ -1,9 +1,20 @@
 import { LitElement, css, html } from 'lit';
+import { Router } from '@vaadin/router';
+
 import { getMessage } from '@core/lang/get-message';
 
 
 export class ProductsFilters extends LitElement {
   static styles = css`
+    section form md-filled-button {
+      margin-left: 17px;
+    }
+
+    section form {
+      display: inline-flex;
+      margin-left: 17px;
+    }
+
     md-outlined-text-field {
       width: -webkit-fill-available;
       margin: 10px 0;
@@ -14,6 +25,9 @@ export class ProductsFilters extends LitElement {
     }
 
     @media (min-width: 576px) {
+      section md-filled-button.new-product {
+        float: right;
+      }
     }
 
     @media (min-width: 768px) {
@@ -37,20 +51,17 @@ export class ProductsFilters extends LitElement {
     return html`
       <section class="filters">
         <form @submit=${this._onSubmit}>
-          <section>
-            <expansion-panel header="${getMessage('products.filters.panelTitle')}">
-              <md-outlined-text-field name="sku" label="${getMessage('products.attrs.sku')}">
-              </md-outlined-text-field>
-              <md-outlined-text-field name="name" label="${getMessage('products.filters.name')}">
-              </md-outlined-text-field>
-              <md-outlined-text-field name="description" label="${getMessage('products.filters.description')}">
-              </md-outlined-text-field>
-            </expansion-panel>
-          </section>
+          <md-outlined-text-field name="term" label="${getMessage('generic.search')}">
+          </md-outlined-text-field>
           <md-filled-button type="submit">${getMessage('generic.search')}</md-filled-button>
         </form>
+        <md-filled-button class="new-product" @click=${this._onNewProductClick}>${getMessage('products.page.newProduct')}</md-filled-button>
       </section>
     `
+  }
+
+  async _onNewProductClick() {
+    Router.go(`/products/create`);
   }
 
   _onSubmit(ev) {

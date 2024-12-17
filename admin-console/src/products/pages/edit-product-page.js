@@ -15,17 +15,6 @@ export class EditProductPage extends LitElement {
   }
 
   static styles = css`
-    :host {
-      display: block;
-    }
-
-    form {
-      background-color: white;
-      border: 1px solid white;
-      border-radius: 10px;
-      padding: 1em;
-      margin-bottom: 2.5em;
-    }
 
     section.actions {
       display: block;
@@ -88,32 +77,34 @@ export class EditProductPage extends LitElement {
 
   render() {
     return html`
-      <h1>${getMessage('products.page.editProduct')} ${this.product.uuid}</h1 >
-      <!-- TODO handle the case in which we're still loading the info -->
-      <form @submit=${this._onSumbmit}>
-        <md-outlined-text-field
-          name="sku"
-          label="${getMessage('products.attrs.sku')}"
-          value="${this.product?.sku}"
-        >
-        </md-outlined-text-field>
-        <md-outlined-text-field
-          name="name"
-          label="${getMessage('products.attrs.name')}"
-          value="${this.product?.name}"
-        >
-        </md-outlined-text-field>
-        <md-outlined-text-field
-          name="description"
-          label="${getMessage('products.attrs.description')}"
-          value="${this.product?.description}"
-        >
-        </md-outlined-text-field>
-        <section class="actions">
-          <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
-          <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
-        </section>
-      </form >
+      <form-page-layout>
+        <h1>${getMessage('products.page.editProduct')} ${this.product.uuid}</h1 >
+        <!-- TODO handle the case in which we're still loading the info -->
+        <form @submit=${this._onSumbmit}>
+          <md-outlined-text-field
+            name="sku"
+            label="${getMessage('products.attrs.sku')}"
+            value="${this.product?.sku}"
+          >
+          </md-outlined-text-field>
+          <md-outlined-text-field
+            name="name"
+            label="${getMessage('products.attrs.name')}"
+            value="${this.product?.name}"
+          >
+          </md-outlined-text-field>
+          <md-outlined-text-field
+            name="description"
+            label="${getMessage('products.attrs.description')}"
+            value="${this.product?.description}"
+          >
+          </md-outlined-text-field>
+          <section class="actions">
+            <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
+            <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
+          </section>
+        </form >
+      </form-page-layout>
   `
   }
 

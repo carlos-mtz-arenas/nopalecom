@@ -11,9 +11,8 @@ export class ProductsPage extends LitElement {
     return html`
       <crud-layout>
         <h1 slot="title" class="title">${getMessage('products.page.title')}</h1>
-        <md-filled-button @click=${this._onNewProductClick} slot="title">${getMessage('products.page.newProduct')}</md-filled-button>
         <products-filters
-          slot="filters"
+          slot="results"
           @product-search-operation=${this._onProductSearchOperation}
         >
         </products-filters>
@@ -25,10 +24,6 @@ export class ProductsPage extends LitElement {
         </product-search-results>
       </crud-layout>
     `
-  }
-
-  async _onNewProductClick() {
-    Router.go(`/products/create`);
   }
 
   async _onProductSearchOperation(ev) {
@@ -50,7 +45,6 @@ export class ProductsPage extends LitElement {
     const product = ev.detail;
 
     Router.go(`/products/${product}`);
-    // TODO redirect to update-product
   }
 
 }

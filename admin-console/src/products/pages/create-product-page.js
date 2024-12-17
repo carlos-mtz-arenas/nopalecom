@@ -8,18 +8,6 @@ import { showSnack } from '@core/handlers/show-snack';
 
 export class CreateProductPage extends LitElement {
   static styles = css`
-    :host {
-      display: block;
-    }
-
-    form {
-      background-color: white;
-      border: 1px solid white;
-      border-radius: 10px;
-      padding: 1em;
-      margin-bottom: 2.5em;
-    }
-
     section.actions {
       display: block;
     }
@@ -65,43 +53,45 @@ export class CreateProductPage extends LitElement {
 
   render() {
     return html`
-      <h1 slot="title">${getMessage('products.page.newProduct')}</h1>
-      <form @submit=${this._onSumbmit} slot="form">
-        <md-outlined-text-field
-          name="sku"
-          label="${getMessage('products.attrs.sku')}"
-          required
-          value="${this.product?.sku}"
-        >
-        </md-outlined-text-field>
-        <md-outlined-text-field
-          name="name"
-          label="${getMessage('products.attrs.name')}"
-          required
-          value="${this.product?.name}"
-        >
-        </md-outlined-text-field>
-        <md-outlined-text-field
-          name="description"
-          label="${getMessage('products.attrs.description')}"
-          value="${this.product?.description}"
-        >
-        </md-outlined-text-field>
-        <md-outlined-text-field
-          type="number"
-          min="1"
-          step="any"
-          name="price"
-          label="${getMessage('products.attrs.price')}"
-          value="${this.product?.price}"
-          required
-        >
-        </md-outlined-text-field>
-        <section class="actions">
-          <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
-          <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
-        </section>
-      </form>
+      <form-page-layout>
+        <h1>${getMessage('products.page.newProduct')}</h1>
+        <form @submit=${this._onSumbmit}>
+          <md-outlined-text-field
+            name="sku"
+            label="${getMessage('products.attrs.sku')}"
+            required
+            value="${this.product?.sku}"
+          >
+          </md-outlined-text-field>
+          <md-outlined-text-field
+            name="name"
+            label="${getMessage('products.attrs.name')}"
+            required
+            value="${this.product?.name}"
+          >
+          </md-outlined-text-field>
+          <md-outlined-text-field
+            name="description"
+            label="${getMessage('products.attrs.description')}"
+            value="${this.product?.description}"
+          >
+          </md-outlined-text-field>
+          <md-outlined-text-field
+            type="number"
+            min="1"
+            step="any"
+            name="price"
+            label="${getMessage('products.attrs.price')}"
+            value="${this.product?.price}"
+            required
+          >
+          </md-outlined-text-field>
+          <section class="actions">
+            <md-filled-button type="submit">${getMessage('generic.save')}</md-filled-button>
+            <md-outlined-button type="cancel" @click=${this._onCancel}>${getMessage('generic.cancel')}</md-outlined-button>
+          </section>
+        </form>
+      </form-page-layout>
     `
   }
 

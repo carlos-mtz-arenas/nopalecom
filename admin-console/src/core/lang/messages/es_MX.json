@@ -54,6 +54,7 @@
   },
   "generic": {
     "search": "Buscar",
+    "searchTerm": "Termino de busqueda",
     "searchResults": "Resultados de la busqueda",
     "save": "Guardar",
     "cancel": "Cancelar",

@@ -17,7 +17,7 @@ export class StoresPage extends LitElement {
     return html`
       <crud-layout>
         <h1 slot="title" class="title">${getMessage('stores.page.title')}</h1>
-        <md-filled-button @click=${this._onNewStoreClick} slot="title">${getMessage('stores.page.newStore')}</md-filled-button>
+        <md-filled-button @click=${this._onNewStoreClick} slot="results">${getMessage('stores.page.newStore')}</md-filled-button>
         <store-search-results
           class="results"
           slot="results"
