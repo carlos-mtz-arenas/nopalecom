@@ -7,9 +7,16 @@
     <title>eCommerce Console</title>
 
     <!-- TODO use a local reference for this as well-->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="" rel="stylesheet"/>
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"></noscript>
+    <link rel="manifest" href="/manifest.json">
 
-    <script type="module" defer>
+    <script type="module">
     import { getMessagesForLang } from '/src/core/lang/messages/index.js';
     import { getConfig } from '/src/core/config/get-config.js';
 

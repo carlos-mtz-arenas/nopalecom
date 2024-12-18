@@ -1,0 +1,25 @@
+{
+  "short_name": "ecom-admin",
+  "name": "Nopal eCommerce - Admin console",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/vite.svg",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/vite.svg",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#6750a4",
+  "background_color": "#f5f5f5"
+}

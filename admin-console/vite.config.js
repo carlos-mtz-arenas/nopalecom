@@ -1,6 +1,18 @@
 import alias from '@rollup/plugin-alias';
+import { defineConfig } from 'vite';
 
-export default {
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: ['src/material-ui.js', 'src/app-main.js', 'index.html'],
+      output: [
+        {
+          format: 'es',
+          dir: 'dist',
+        }
+      ],
+    }
+  },
   plugins: [
     alias({
       entries: [
@@ -16,4 +28,4 @@ export default {
       ]
     })
   ],
-};
+});
