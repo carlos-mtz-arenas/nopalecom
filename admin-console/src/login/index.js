@@ -1,1 +1,1 @@
-import './login-page';
+import './pages/login-page';

@@ -60,6 +60,11 @@ export class NavMenu extends LitElement {
   static get properties() {
     return {
       menuOpen: { type: Boolean, reflect: true },
+      userName: {
+        attribute: 'user-name',
+        type: String,
+        reflect: true,
+      },
     }
   };
 
@@ -72,10 +77,21 @@ export class NavMenu extends LitElement {
     this.menuOpen = !this.menuOpen;
   }
 
+  userCard() {
+    return html`
+      <div>${this.userName}</div>
+      <md-icon>account_circle</md-icon>
+    `;
+  }
+
   render() {
     return html`
     <nav>
       <ul>
+        <li>
+          <user-profile-nav user-name=${this.userName}></user-profile-nav>
+        </li>
+
         <li>
           <a title="Stores" href="/stores"><md-icon>store</md-icon></a>
         </li>

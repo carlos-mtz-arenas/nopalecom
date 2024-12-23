@@ -2,6 +2,10 @@
 
 export const routes = [
   {
+    path: '/login',
+    component: 'login-page',
+  },
+  {
     path: '/products',
     component: 'products-page',
   },

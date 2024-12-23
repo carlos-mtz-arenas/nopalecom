@@ -1,4 +1,8 @@
 {
+  "login": {
+    "title": "Inicio de sesion",
+    "button": "Iniciar"
+  },
   "products": {
     "attrs": {
       "sku": "SKU",

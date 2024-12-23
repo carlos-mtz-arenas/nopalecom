@@ -1,50 +1,12 @@
 import { LitElement, css, html } from 'lit';
 import { getMessage } from '@core/lang/get-message';
 
+import responsiveTable from '@core/components/responsive-table-css';
 
 export class StoreSearchResults extends LitElement {
-  static styles = css`
-    table {
-      width: 100%;
-      display: table;
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
-
-    thead {
-      color: rgb(0 0 0 / 90%);
-    }
-
-    thead tr {
-      border-bottom: 1px solid rgba(0,0,0,0.12);
-    }
-
-    tr {
-      display: table-row;
-      vertical-align: inherit;
-      unicode-bidi: isolate;
-      border-color: inherit;
-    }
-
-    td, th {
-      padding: 15px 10px;
-      display: table-cell;
-      text-align: left;
-      vertical-align: middle;
-      border-radius: 2px;
-    }
-
-    tbody {
-      display: table-row-group;
-      vertical-align: middle;
-      unicode-bidi: isolate;
-      border-color: inherit;
-    }
-
-    md-filled-button {
-      margin: 27px 0;
-    }
-
+  static styles = [
+    responsiveTable,
+    css`
     @media (min-width: 576px) {
     }
 
@@ -52,15 +14,12 @@ export class StoreSearchResults extends LitElement {
     }
 
     @media (min-width: 992px) {
-      md-filled-text-field {
-        display: block;
-        width: 70%;
-      }
     }
 
     @media (min-width: 1200px) {
     }
-  `;
+  `
+  ];
 
   static get properties() {
     return {
